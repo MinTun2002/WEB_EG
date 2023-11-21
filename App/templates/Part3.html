@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEIC Part 3 Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>TOEIC Part 3 Practice</h1>
+
+<form method="post" action="/submit_answers">
+    {% for question in part3_data %}
+        <div class="question-container">
+            <!-- Hiển thị Audio -->
+            {% if question[2] is divisibleby 3 %}
+            <audio controls>
+                <source src="{{ url_for('get_audio', filename=question[10]) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            {% endif %}
+        
+            {% if question[2] is divisibleby 3 and question[2] >= 1062 %}
+                    <!-- Hiển thị Picture -->
+                <img src="{{ url_for('get_picture', filename=question[9]) }}" alt="Question Image" style="max-width: 100%; height: auto;">
+            {% endif %}
+            <!-- Thêm các lựa chọn cho câu hỏi -->
+            <ul>
+                <h3>Question {{ question[2] %100 }}:</h3>
+                <p>{{ question[3] }}</p>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="A"> A: {{ question[4]}}</li>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="B"> B: {{ question[5]}}</li>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="C"> C: {{ question[6]}}</li>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="D"> D: {{ question[7]}}</li>
+            </ul>
+        </div>
+    {% endfor %}
+    <button type="submit">Submit Answers</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>English Quiz</title>
+</head>
+<body>
+    <audio controls>
+        <source src="/play_audio" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    {% for question in questions %}c
+    <div>
+        <p>Câu {{ question.IDQUESTION%1000 }}: {{ question.LinkQUESTION }}</p>
+        <label>
+            <input type="radio" name="question{{ question.IDQUESTION }}" value="A">A.{{ question.A }}<br>
+        </label>
+        <label>
+            <input type="radio" name="question{{ question.IDQUESTION }}" value="B">B.{{ question.B }}<br>
+        </label>
+        <label>
+            <input type="radio" name="question{{ question.IDQUESTION }}" value="C">C.{{ question.C }}<br>
+        </label>
+        <label>
+            <input type="radio" name="question{{ question.IDQUESTION }}" value="D">D.{{ question.D }}<br>
+        </label>
+    </div>
+    {% endfor %}
+    <br>
+    <input type="submit" value="Submit">
+=======
+    <title>Trắc nghiệm</title>
+</head>
+<body>
+    <form action="/submit" method="post">
+        {% for question in questions %}
+            <p>{{ question[1] }}</p>
+            <input type="radio" name="{{ question[0] }}" value="A"> {{ question[2] }}<br>
+            <input type="radio" name="{{ question[0] }}" value="B"> {{ question[3] }}<br>
+            <input type="radio" name="{{ question[0] }}" value="C"> {{ question[4] }}<br>
+            <input type="radio" name="{{ question[0] }}" value="D"> {{ question[5] }}<br><br>
+        {% endfor %}
+        <audio controls>
+            <source src="{{ url_for('serve_audio', audio_file=question[2]) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>        
+        <input type="submit" value="Submit">
+    </form>
+>>>>>>> 0f60bf4b972840a6b3c8873e96bf25f0c8253458
+</body>
+</html>

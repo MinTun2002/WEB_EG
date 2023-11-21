@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEIC Part 2 Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>TOEIC Part 2 Practice</h1>
+
+<form method="post" action="/submit_answers">
+    {% for question in part2_data %}
+        <div class="question-container">
+            <h3>Question {{ question.IDQuestion %100 }}:</h3>
+            <p>{{ question.LinkQUESTION }}</p>
+            
+            <!-- Hiển thị Audio -->
+            <audio controls>
+                <source src="{{ url_for('get_audio', filename=question[9]) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <!-- Thêm các lựa chọn cho câu hỏi -->
+            <ul>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="A"> A: {{ question[4]}}</li>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="B"> B: {{ question[5]}}</li>
+                <li><input type="radio" name="question{{ question.IDQUESTION }}" value="C"> C: {{ question[6]}}</li>
+            </ul>
+        </div>
+    {% endfor %}
+    <button type="submit">Submit Answers</button>
+</form>
+
+</body>
+</html>

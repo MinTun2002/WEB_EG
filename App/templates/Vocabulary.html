@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Search</title>
+</head>
+<body>
+
+    <h1>Vocabulary Search</h1>
+
+    <form method="post" action="/Vocabulary">
+        <label for="search_word">Enter a word:</label>
+        <input type="text" id="search_word" name="search_word" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if result %}
+        <h2>Result:</h2>
+        <p><strong>English Word:</strong> {{ result.EnglishWord }}</p>
+        <p><strong>Vietnamese Definition:</strong> {{ result.VietnameseDefinition }}</p>
+        <p><strong>Part of Speech:</strong> {{ result.PartOfSpeech }}</p>
+        <p><strong>Example Sentence:</strong> {{ result.ExampleSentence }}</p>
+    {% elif message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+</body>
+</html>
