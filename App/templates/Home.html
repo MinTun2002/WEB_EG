@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+
+    <h2>Home</h2>
+
+    <a href="Vocabulary.html"><button>Vocabulary</button></a>
+    <a href="Practice.html"><button>Practice</button></a>
+    <a href="index2.html"><button>Audio</button></a>
+    <a href="play_audio.html"><button>Play</button></a>
+    <form action="/" method="POST">
+    
+        <a href="{{ url_for('Score') }}"><button type="submit" name="button_pressed" value="Score">Score</button></a>
+        <a href="{{ url_for('User') }}"><button type="submit" name="button_pressed" value="User">Usermain</button></a>
+    </form>
+</body>
+</html>
