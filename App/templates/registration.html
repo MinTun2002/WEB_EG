@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang Đăng Ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng Ký Tài Khoản</h2>
+        {% if error%}
+        <p style = "color: red;"> {{error}} </p>
+        {% endif %}
+        <form action="/registration" method="post">
+            <div class="form-group">
+                <label for="name">Tên:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Nickname:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="sex">Giới tính:</label>
+                <input type="text" id="sex" name="sex" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Đăng Ký">
+            </div>
+        </form>
+        <p>Đã có tài khoản? <a href="{{url_for('login')}}">Đăng Nhập</a></p>
+    </div>
+</body>
+</html>
